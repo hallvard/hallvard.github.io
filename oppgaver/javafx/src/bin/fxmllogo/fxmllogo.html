@@ -1,0 +1,50 @@
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>NTNU-logo med FXML | kodeklubben</title><link href="../../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="col-xs-12"><div class="top-menu"><a href="../../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Hjem</a></div></div><div class="col-xs-12"><header class="clearfix"><img src="../../../assets/img/ccno_logo.png" class="logo hidden-xs"/><h1 class="title">NTNU-logo med FXML</h1></header></div><div class="col-xs-12"><div class="content"><section id="introduksjon" class="level1 intro">
+<h1>Introduksjon</h1>
+<p>Formålet til denne leksjonen er å lære hvordan du kan bruke <strong>FXML</strong> for å lage skjerminnhold, og <strong>to måter</strong> å lage slikt innhold. I tillegg skal du lære hvordan du får app-en til å last inn og vise frem innholdet i FXML-filer.</p>
+<p>I leksjonen <a href="../helloworld/helloworld.html">Hello world</a> lærte du om hvordan du kan lage en app som viste et vindu med et tekst-objekt (av type <strong>Text</strong>). Da skrev du Java-kode som <em>laget</em> tekst-objektet, <em>satte grafiske egenskaper</em> for tekst.objektet og <em>la det til</em> app-vinduet. Slik kode kan fort bli lang og uoversiktlig, og det kan være vanskelig å skrive kode som har ønsker effekt og se for seg hvordan skjerminnholdet vil bli seende ut.</p>
+<p>For å gjøre arbeidet med skjerminnhold enklere, så finnes det en egen kode-type kalt FXML for å lage skjerminnhold. FXML ligner på HTML ved at det bruker XML-elementer, f.eks. <code>&lt;Text ...&gt; ... &lt;/Text&gt;</code> og attributter, f.eks. <code>fill=&quot;blue&quot;</code> for å beskrive innholdet. Når en skal lage FXML-filer, kan en enten redigere FXML som tekst i en egen FXML-editor eller bruke en egen tegne-app som leser og skriver FXML-filer. Vi skal se på begge disse teknikkene i denne leksjonen.</p>
+</section>
+<section id="steg-1-opprette-app-pakke-app-klasse-og-fxml-fil" class="level1 activity">
+<h1>Steg 1: Opprette app-pakke, app-klasse og FXML-fil</h1>
+<ul>
+<li><p>Lag først en ny app-pakke og app-klasse som forklart i <a href="../helloworld/helloworld.html">Hello world-leksjonen</a>. Bruk <strong>fxmllogo</strong> som navn på pakken og <strong>FxmlLogoApp</strong> som navn på app-klassen.</p></li>
+<li><p>Høyreklikk på fxmllogo-pakken og velg <code>New &gt; Other...</code> så du får opp en liste med såkalte <em>veivisere</em> (eng: <em>wizards</em>). Vi skal bruke den som heter <strong>FXML Document</strong>. Det enkleste er å skrive inn ‘fx’ i søkefeltet, for å snevre inn utvalget:</p>
+<figure>
+<img src="../images/new-fxml-document.png" title="New FXML document" />
+</figure>
+<p>Trykk <code>Next</code> for å velge veiviseren. Du vil da få opp følgende skjema:</p>
+<figure>
+<img src="../images/new-fxml-file-wizard.png" title="New FXML file" />
+</figure>
+<p>Fyll inn <code>FxmlLogoApp</code> og trykk <code>Finish</code>. Du vil da få opp en FXML-editor med den nye FXML-fila:</p>
+<figure>
+<img src="../images/initial-FxmlLogoApp.fxml.png" title="Initial FxmlLogoApp.fxml" />
+</figure></li>
+<li><p>Rediger teksten slik at den blir som følger:</p>
+<pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;AnchorPane</span><span class="ot"> xmlns:fx=</span><span class="st">&quot;http://javafx.com/fxml/1&quot;</span><span class="ot"> prefWidth=</span><span class="st">&quot;500&quot;</span><span class="ot"> prefHeight=</span><span class="st">&quot;400&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;Rectangle</span><span class="ot"> layoutX=</span><span class="st">&quot;100&quot;</span><span class="ot"> layoutY=</span><span class="st">&quot;20&quot;</span><span class="ot"> width=</span><span class="st">&quot;80&quot;</span><span class="ot"> height=</span><span class="st">&quot;80&quot;</span><span class="ot"> fill=</span><span class="st">&quot;blue&quot;</span>
+<span class="ot">    arcWidth=</span><span class="st">&quot;25&quot;</span><span class="ot"> arcHeight=</span><span class="st">&quot;25&quot;</span><span class="kw">/&gt;</span>
+<span class="kw">&lt;Circle</span><span class="ot"> layoutX=</span><span class="st">&quot;150&quot;</span><span class="ot"> layoutY=</span><span class="st">&quot;150&quot;</span><span class="ot"> radius=</span><span class="st">&quot;40&quot;</span><span class="ot"> fill=</span><span class="st">&quot;blue&quot;</span><span class="kw">/&gt;</span>
+<span class="kw">&lt;Text</span><span class="ot"> layoutX=</span><span class="st">&quot;10&quot;</span><span class="ot"> layoutY=</span><span class="st">&quot;120&quot;</span><span class="ot"> text=</span><span class="st">&quot;NTNU&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;font&gt;</span>
+        <span class="kw">&lt;Font</span><span class="ot"> name=</span><span class="st">&quot;Arial&quot;</span><span class="ot"> size=</span><span class="st">&quot;36&quot;</span><span class="kw">/&gt;</span>
+    <span class="kw">&lt;/font&gt;</span>
+<span class="kw">&lt;/Text&gt;</span>
+<span class="kw">&lt;/AnchorPane&gt;</span></code></pre>
+<p>FXML-editoren har samme type kode-komplettering som Java-editoren. Når du f.eks. har skrevet inn <code>&lt;Rect</code>, kan du trykk ctrl-mellomrom og editoren vil både fylle ut resten av <strong>Rectangle</strong>-navnet og legge til en import-setning øverst i fila (tilsvarende import-setningen i Java):</p>
+<p><code>&lt;?import javafx.scene.shape.Rectangle?&gt;</code></p>
+<p>(Hvis du ikke bruker kode-kompletteringsfunksjonen, så må du skrive inn import-setningen selv.) Tilsvarende kan du bruke kode-komplettering på attributt-navnene <strong>layoutX</strong>, <strong>layoutY</strong>, <strong>width</strong>, <strong>height</strong>, <strong>fill</strong> osv.</p></li>
+<li><p>Mens du redigerer FXML-koden, så kan det være kjekt å se hvordan innholdet vil bli seende ut, når det lastes inn og vises frem. Eclipse har et eget panel kalt <strong>JavaFX preview</strong> som hele tiden laster inn FXML-koden du redigerer og viser frem innholdet. Dette åpnes ved å velge <code>Window &gt; Show View...</code> og så finne panelet i lista. Bruk søkefeltet for å filtrere lista (skriv ’, så panelet blir enklere å finne.</p>
+<figure>
+<img src="../images/fxml-editor-with-preview-pane.png" title="FXML-editor med preview-panel" />
+</figure></li>
+</ul>
+<section id="litt-om-fxml" class="level2">
+<h2>Litt om FXML</h2>
+<p>Du har kanskje kjent igjen mange av ordene i FXML-fila fra Java-koden du skrev i <a href="../helloworld/helloworld.html">Hello world-leksjonen</a>, og det er ikke tilfeldig. Enkelt sagt så tilsvarer elementnavnene i FXML-koden (ordet etter ‘&lt;’ og ‘&lt;/’), f.eks. <strong>Text</strong> og <strong>Rectangle</strong> Java-klasser, og attributtnavnene tilsvarer egenskaper, f.eks. <strong>layoutX</strong>, <strong>width</strong> og <strong>fill</strong>. Det er også noen elementnavn som tilsvarer egenskaper, f.eks. <strong>font</strong>. Når FXML-koden blir lest inn, så vil hvert element som tilsvarer en Java-klasse bli til en instans (et Java-objekt) av den klassen, og hvert attributt bli brukt til å sette en egenskap, som om en brukt tilsvarende <strong>set</strong>-metode.</p>
+</section>
+</section>
+<section id="hva-har-du-lært" class="level1">
+<h1>Hva har du lært?</h1>
+</section>
+</div></div><div class="col-xs-12"><div id="footer" class="clearfix"><div class="license"><p><strong>Lisens:</strong></p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/deed.no">CC-BY 4.0 Internasjonal</a></div></div></div></div></div><script src="../../../assets/script.min.js"></script></body></html>
