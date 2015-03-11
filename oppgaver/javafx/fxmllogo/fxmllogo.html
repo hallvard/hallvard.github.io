@@ -1,0 +1,50 @@
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>NTNU-logo med FXML | YourCodeClubName</title><link href="../../assets/style.min.css" rel="stylesheet"/></head><body><div class="container"><div class="row"><div class="col-xs-12"><div class="top-menu"><a href="../../index.html" class="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-home"></span> Home</a></div></div><div class="col-xs-12"><header class="clearfix"><img src="../../assets/img/ccno_logo.png" class="logo hidden-xs"/><h1 class="title">NTNU-logo med FXML<a href="/javafx/fxmllogo/fxmllogo.pdf" title="Download PDF" class="download"><span class="glyphicon glyphicon-save-file"></span></a></h1></header></div><div class="col-xs-12"><div class="content"><section id="introduksjon" class="level1 intro">
+<h1>Introduksjon</h1>
+<p>Formålet til denne leksjonen er å lære hvordan du kan bruke <strong>FXML</strong> for å lage skjerminnhold, og <strong>to måter</strong> å lage slikt innhold. I tillegg skal du lære hvordan du får app-en til å last inn og vise frem innholdet i FXML-filer.</p>
+<p>I leksjonen <a href="../helloworld/helloworld.html">Hello world</a> lærte du om hvordan du kan lage en app som viste et vindu med et tekst-objekt (av type <strong>Text</strong>). Da skrev du Java-kode som <em>laget</em> tekst-objektet, <em>satte grafiske egenskaper</em> for tekst.objektet og <em>la det til</em> app-vinduet. Slik kode kan fort bli lang og uoversiktlig, og det kan være vanskelig å skrive kode som har ønsker effekt og se for seg hvordan skjerminnholdet vil bli seende ut.</p>
+<p>For å gjøre arbeidet med skjerminnhold enklere, så finnes det en egen kode-type kalt FXML for å lage skjerminnhold. FXML ligner på HTML ved at det bruker XML-elementer, f.eks. <code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">Text</span> <span class="hljs-attribute">...</span>&gt;</span> ... <span class="hljs-tag">&lt;/<span class="hljs-title">Text</span>&gt;</span></code> og attributter, f.eks. <code class="lang-java">fill=<span class="hljs-string">"blue"</span></code> for å beskrive innholdet. Når en skal lage FXML-filer, kan en enten redigere FXML som tekst i en egen FXML-editor eller bruke en egen tegne-app som leser og skriver FXML-filer. Vi skal se på begge disse teknikkene i denne leksjonen.</p>
+</section>
+<section id="steg-1-opprette-app-pakke-app-klasse-og-fxml-fil" class="level1 activity">
+<h1>Steg 1: Opprette app-pakke, app-klasse og FXML-fil</h1>
+<ul>
+<li><p>Lag først en ny app-pakke og app-klasse som forklart i <a href="../helloworld/helloworld.html">Hello world-leksjonen</a>. Bruk <strong>fxmllogo</strong> som navn på pakken og <strong>FxmlLogoApp</strong> som navn på app-klassen.</p></li>
+<li><p>Høyreklikk på fxmllogo-pakken og velg <code>New &gt; Other...</code> så du får opp en liste med såkalte <em>veivisere</em> (eng: <em>wizards</em>). Vi skal bruke den som heter <strong>FXML Document</strong>. Det enkleste er å skrive inn ‘fx’ i søkefeltet, for å snevre inn utvalget:</p>
+<figure>
+<img src="../images/new-fxml-document.png" title="New FXML document">
+</figure>
+<p>Trykk <code>Next</code> for å velge veiviseren. Du vil da få opp følgende skjema:</p>
+<figure>
+<img src="../images/new-fxml-file-wizard.png" title="New FXML file">
+</figure>
+<p>Fyll inn <code>FxmlLogoApp</code> og trykk <code>Finish</code>. Du vil da få opp en FXML-editor med den nye FXML-fila:</p>
+<figure>
+<img src="../images/initial-FxmlLogoApp.fxml.png" title="Initial FxmlLogoApp.fxml">
+</figure></li>
+<li><p>Rediger teksten slik at den blir som følger:</p>
+<pre class="sourceCode xml"><code class="sourceCode xml lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">AnchorPane</span> <span class="hljs-attribute">xmlns:fx</span>=<span class="hljs-value">"http://javafx.com/fxml/1"</span> <span class="hljs-attribute">prefWidth</span>=<span class="hljs-value">"500"</span> <span class="hljs-attribute">prefHeight</span>=<span class="hljs-value">"400"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">Rectangle</span> <span class="hljs-attribute">layoutX</span>=<span class="hljs-value">"100"</span> <span class="hljs-attribute">layoutY</span>=<span class="hljs-value">"20"</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">"80"</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">"80"</span> <span class="hljs-attribute">fill</span>=<span class="hljs-value">"blue"</span>
+    <span class="hljs-attribute">arcWidth</span>=<span class="hljs-value">"25"</span> <span class="hljs-attribute">arcHeight</span>=<span class="hljs-value">"25"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">Circle</span> <span class="hljs-attribute">layoutX</span>=<span class="hljs-value">"150"</span> <span class="hljs-attribute">layoutY</span>=<span class="hljs-value">"150"</span> <span class="hljs-attribute">radius</span>=<span class="hljs-value">"40"</span> <span class="hljs-attribute">fill</span>=<span class="hljs-value">"blue"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">Text</span> <span class="hljs-attribute">layoutX</span>=<span class="hljs-value">"10"</span> <span class="hljs-attribute">layoutY</span>=<span class="hljs-value">"120"</span> <span class="hljs-attribute">text</span>=<span class="hljs-value">"NTNU"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">font</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Font</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Arial"</span> <span class="hljs-attribute">size</span>=<span class="hljs-value">"36"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">font</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">Text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">AnchorPane</span>&gt;</span></code></pre>
+<p>FXML-editoren har samme type kode-komplettering som Java-editoren. Når du f.eks. har skrevet inn <code>&lt;Rect</code>, kan du trykk ctrl-mellomrom og editoren vil både fylle ut resten av <strong>Rectangle</strong>-navnet og legge til en import-setning øverst i fila (tilsvarende import-setningen i Java):</p>
+<p><code class="lang-html"><span class="hljs-pi">&lt;?import javafx.scene.shape.Rectangle?&gt;</span></code></p>
+<p>(Hvis du ikke bruker kode-kompletteringsfunksjonen, så må du skrive inn import-setningen selv.) Tilsvarende kan du bruke kode-komplettering på attributt-navnene <strong>layoutX</strong>, <strong>layoutY</strong>, <strong>width</strong>, <strong>height</strong>, <strong>fill</strong> osv.</p></li>
+<li><p>Mens du redigerer FXML-koden, så kan det være kjekt å se hvordan innholdet vil bli seende ut, når det lastes inn og vises frem. Eclipse har et eget panel kalt <strong>JavaFX preview</strong> som hele tiden laster inn FXML-koden du redigerer og viser frem innholdet. Dette åpnes ved å velge <code>Window &gt; Show View...</code> og så finne panelet i lista. Bruk søkefeltet for å filtrere lista (skriv ’, så panelet blir enklere å finne.</p>
+<figure>
+<img src="../images/fxml-editor-with-preview-pane.png" title="FXML-editor med preview-panel">
+</figure></li>
+</ul>
+<section id="litt-om-fxml" class="level2">
+<h2>Litt om FXML</h2>
+<p>Du har kanskje kjent igjen mange av ordene i FXML-fila fra Java-koden du skrev i <a href="../helloworld/helloworld.html">Hello world-leksjonen</a>, og det er ikke tilfeldig. Enkelt sagt så tilsvarer elementnavnene i FXML-koden (ordet etter ‘&lt;’ og ‘&lt;/’), f.eks. <strong>Text</strong> og <strong>Rectangle</strong> Java-klasser, og attributtnavnene tilsvarer egenskaper, f.eks. <strong>layoutX</strong>, <strong>width</strong> og <strong>fill</strong>. Det er også noen elementnavn som tilsvarer egenskaper, f.eks. <strong>font</strong>. Når FXML-koden blir lest inn, så vil hvert element som tilsvarer en Java-klasse bli til en instans (et Java-objekt) av den klassen, og hvert attributt bli brukt til å sette en egenskap, som om en brukt tilsvarende <strong>set</strong>-metode.</p>
+</section>
+</section>
+<section id="hva-har-du-lært" class="level1">
+<h1>Hva har du lært?</h1>
+</section>
+</div></div><div class="col-xs-12"><div id="footer" class="clearfix"><div class="license"><p><strong>License:</strong></p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></div></div></div></div></div><script src="../../assets/script.min.js"></script></body></html>
